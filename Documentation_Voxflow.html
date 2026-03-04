@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Usuario - VOXFLOW</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="faviconweb-(1).png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #22d3ee;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        aside {
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-links a.active {
+            color: #fff;
+            background: var(--primary);
+            font-weight: 600;
+        }
+
+        article section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 7rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem 0;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        .alert {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 0.75rem 0.75rem 0;
+            margin: 2rem 0;
+        }
+
+        .alert-title {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-important {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: var(--danger);
+        }
+
+        .img-container {
+            background: var(--card-bg);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            display: block;
+        }
+
+        .step-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .step-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            aside {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Lightbox Styles */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .img-container img {
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .img-container img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">VOX<span>FLOW</span></a>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">v1.0.0 - User Guide</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            <aside>
+                <ul class="nav-links">
+                    <li><a href="#intro" class="active">Introducción</a></li>
+                    <li><a href="#estado">Estado de Conexión</a></li>
+                    <li><a href="#llamadas">Gestión de Llamadas</a></li>
+                    <li><a href="#crm">Gestión de CRM</a></li>
+                    <li><a href="#perfil">Perfil y Configuración</a></li>
+                    <li><a href="#soporte">Soporte Técnico</a></li>
+                </ul>
+            </aside>
+
+            <article>
+                <section id="intro">
+                    <h1>Guía de Usuario: VOXFLOW Operator Console</h1>
+                    <p>Bienvenido a <strong>VOXFLOW</strong>, la plataforma premium para la gestión de llamadas y CRM de
+                        alta eficiencia. Esta guía te ayudará a dominar todas las herramientas disponibles para ofrecer
+                        una atención excepcional.</p>
+
+                    <div class="alert" style="background: rgba(34, 197, 94, 0.1); border-left-color: var(--success);">
+                        <div class="alert-title">🎧 RECOMENDACIÓN TÉCNICA</div>
+                        <p>Para garantizar la mejor calidad de audio y cancelación de ruido durante tus llamadas, se
+                            recomienda encarecidamente el uso de <strong>auriculares y micrófono profesionales dedicados
+                                (Headset)</strong>.</p>
+                    </div>
+                </section>
+
+                <section id="estado">
+                    <h2>🟢 1. Estado de Conexión y Acceso</h2>
+                    <p>Para comenzar a recibir llamadas, es <strong>obligatorio</strong> que el sistema esté
+                        correctamente vinculado.</p>
+
+                    <h3>Acceso Inicial</h3>
+                    <ul class="step-list">
+                        <li>Ingresa tus credenciales en el portal de acceso.</li>
+                        <li>Haz clic en <strong>INICIAR SESIÓN Y AUDIO</strong>.</li>
+                    </ul>
+
+                    <div class="img-container">
+                        <img src="login_screen_1772596468639.png" alt="Pantalla de Login">
+                    </div>
+
+                    <h3>El Indicador de Estado (Crítico)</h3>
+                    <p>En la parte superior derecha verás un indicador de estado.</p>
+
+                    <div class="alert alert-important">
+                        <div class="alert-title">⚠️ ¡IMPORTANTE!</div>
+                        <p><strong>El LED debe decir siempre "ONLINE" (Círculo azul).</strong></p>
+                        <p>Si el LED cambia a <strong>"OFFLINE" (Círculo gris)</strong>, no podrás recibir ni realizar
+                            llamadas.</p>
+                        <p><strong>Acción:</strong> Contactar a soporte técnico de Planificalo inmediatamente si el
+                            estado Offline persiste por más de 30 segundos.</p>
+                    </div>
+
+                    <div class="img-container">
+                        <img src="dashboard_header_online_1772596487688.png" alt="Estado Online">
+                    </div>
+                </section>
+
+                <section id="llamadas">
+                    <h2>📞 2. Gestión de Llamadas Entrantes</h2>
+                    <p>Cuando entra una llamada, aparecerá un panel flotante con la información en tiempo real.</p>
+
+                    <h3>El Panel de Llamada</h3>
+                    <ul class="step-list">
+                        <li><strong>Número DID (Azul):</strong> Indica a qué línea de Voxflow están llamando.</li>
+                        <li><strong>De:</strong> Muestra el número de teléfono del cliente que llama.</li>
+                    </ul>
+
+                    <div class="img-container">
+                        <img src="incoming_call_popup_final_1772598813606.png" alt="Popup de Llamada"
+                            onclick="openLightbox(this.src)">
+                    </div>
+
+                    <h3>Acciones Disponibles</h3>
+                    <ul class="step-list">
+                        <li><strong>RESPONDER AHORA:</strong> Atiende la llamada inmediatamente.</li>
+                        <li><strong>IGNORAR:</strong> Rechaza la llamada en tu terminal para que salte al siguiente
+                            operador disponible.</li>
+                    </ul>
+                </section>
+
+                <section id="crm">
+                    <h2>👥 3. Gestión de Clientes (CRM)</h2>
+                    <p>VOXFLOW permite gestionar la base de datos de clientes de forma dinámica.</p>
+
+                    <h3>Buscar y Ver Fichas</h3>
+                    <p>Busca clientes por nombre o teléfono desde la barra superior. Al abrir una ficha, tendrás acceso
+                        al historial completo.</p>
+
+                    <div class="img-container">
+                        <img src="customer_detail_view_1772597212406.png" alt="Ficha de Cliente">
+                    </div>
+
+                    <ul class="step-list">
+                        <li><strong>Notas Rápidas:</strong> Añade comentarios sobre la llamada actual.</li>
+                        <li><strong>Historial:</strong> Revisa interacciones previas.</li>
+                    </ul>
+                </section>
+
+                <section id="perfil">
+                    <h2>⚙️ 4. Perfil y Configuración Personal</h2>
+                    <p>Haz clic en tu nombre de usuario para desplegar el menú de configuración.</p>
+
+                    <div class="img-container">
+                        <img src="profile_dropdown_1772596542020.png" alt="Menú de Perfil">
+                    </div>
+
+                    <h3>Funciones Clave:</h3>
+                    <ul class="step-list">
+                        <li><strong>Selector de Audio:</strong> Elige tus auriculares o altavoces.</li>
+                        <li><strong>Cambiar contraseña:</strong> Actualiza tu clave de acceso.</li>
+                        <li><strong>Cerrar Sesión:</strong> Finaliza tu turno de forma segura.</li>
+                    </ul>
+                </section>
+
+                <section id="soporte">
+                    <h2>🆘 Soporte Técnico</h2>
+                    <p>Si experimentas problemas con el audio o la conexión:</p>
+                    <ol class="step-list" style="list-style: decimal; padding-left: 2rem;">
+                        <li>Verifica que tienes conexión a Internet.</li>
+                        <li>Asegúrate de que el LED superior esté en <strong>ONLINE</strong>.</li>
+                        <li>Refresca la página (F5).</li>
+                        <li>Contacta al administrador si el problema persiste.</li>
+                    </ol>
+                </section>
+            </article>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 VOXFLOW - Professional Communication Solutions</p>
+            <p style="font-size: 0.8rem;">Powered by Planificalo</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Zoom">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            lbImg.src = src;
+            lb.style.display = 'flex';
+        }
+
+        // Apply click event to all guide images
+        document.querySelectorAll('.img-container img').forEach(img => {
+            img.onclick = function () { openLightbox(this.src); };
+        });
+
+        // Simple scroll active link highlight
+        const sections = document.querySelectorAll("section");
+        const navLi = document.querySelectorAll("aside ul li a");
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLi.forEach((li) => {
+                li.classList.remove("active");
+                if (li.getAttribute("href").includes(current)) {
+                    li.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
